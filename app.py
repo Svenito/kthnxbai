@@ -5,7 +5,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 app = Flask(__name__)
-app.config.from_object('configs.baseconfig')
+app.config.from_object('configs.exampleconfig')
 app.config.from_envvar('KTBCONF_FILE')
 
 db = SQLAlchemy(app)
