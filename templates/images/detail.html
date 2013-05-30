@@ -1,0 +1,38 @@
+{% extends "base.html" %}                                               
+{% block content %}                                                             
+
+<a href="/">Back to Gallery</a><br/>
+<div class="nav">
+    {% if image.prev() %}
+        <a href="{{ url_for('images.detail', filename=image.prev().filename) }}">
+            Prev
+        </a>
+    {% else %}
+        Prev
+    {% endif %}
+ | 
+    {% if image.next() %}
+        <a href="{{ url_for('images.detail', filename=image.next().filename) }}">
+            Next
+        </a>
+    {% else %}
+        Next
+    {% endif %}
+    <br/>                                                                           
+Viewed: {{ image.num_views }} times<br/>
+Click image for random<br/>
+</div>
+
+<div class="position">
+    <div class="detail">
+        <a href="/detail/{{ image.get_random() }}">
+    <img src="{{ image.fullsize() }}"/>
+</a>
+</div>
+<br/>
+<a href={{ image.fullsize() }}>
+    http://kthnxbai.co.uk{{ image.fullsize() }}
+</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+Flask==0.9
+Flask-SQLAlchemy==0.16
+Flask-Script==0.5.3
+Flask-WTF==0.8.3
+Jinja2==2.5.5
+Pygments==1.4
+SQLAlchemy==0.7.9
+Sphinx==1.0.7
+Tempita==0.5.1
+WTForms==1.0.3
+Werkzeug==0.8.3
+argparse==1.2.1
+decorator==3.4.0
+docutils==0.7
+psycopg2==2.5
+sqlalchemy-migrate==0.7.2
+wsgiref==0.1.2
