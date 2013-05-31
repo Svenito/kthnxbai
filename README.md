@@ -3,17 +3,17 @@ KTHNXBAI Gallery
 
 See requirements.txt for required modules
 
-source for http://www.kthnxbai.co.uk
+This is the source for http://www.kthnxbai.co.uk
 
 A very simple image gallery primarily used to collect images off of
-the rest of the internet. 
+the rest of the internet and to share them.
 
 What to do
 ----------
 
 First configure the settings in 
 
-  configs/exampleconfig.py
+    configs/exampleconfig.py
   
 The ORM is SQLAlchemy, so you can use PostgreSQL, MySQL or SQLite.
 
@@ -21,7 +21,7 @@ The way to import images is to create a 'to_process' folder in the
 project root and then put all the images you want to import into that 
 folder. Then run 
 
-  python manager.py ingest_images
+    python manager.py ingest_images
   
 and it will create thumbnails, determine if the image is animated and
 import the data into the database. Thumbnails and original images are 
@@ -31,6 +31,14 @@ Other
 -----
 
 First flask project, so still ironing out some layout and design
+
+TODO
+----
+
+* Make the ordering menu prettier
+* Keyboard shortcuts
+* Fixed width layout for thumbnail grid???
+
 
 License
 -------
