@@ -21,7 +21,7 @@ The way to import images is to create a 'to_process' folder in the
 project root and then put all the images you want to import into that 
 folder. Then run 
 
-    python manager.py ingest_images
+    python manage.py ingest_images
   
 and it will create thumbnails, determine if the image is animated and
 import the data into the database. Thumbnails and original images are 
