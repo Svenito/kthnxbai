@@ -32,14 +32,6 @@ Other
 
 First flask project, so still ironing out some layout and design
 
-TODO
-----
-
-* Make the ordering menu prettier
-* Keyboard shortcuts
-* Fixed width layout for thumbnail grid???
-
-
 License
 -------
 
