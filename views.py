@@ -15,7 +15,6 @@ class SortForm(Form):
                                                          ('50', '50'),
                                                          ('100', '100'),
                                                          ('999999999', 'All')])
-    show_animated_only = BooleanField(u'Show animated only')
 
 
 class ListView(MethodView):
