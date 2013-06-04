@@ -1,8 +1,6 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 app = Flask(__name__)
 app.config.from_object('configs.exampleconfig')
