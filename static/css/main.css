@@ -92,5 +92,6 @@ span.navi {
 }
 
 .footer {
+    clear: both;
     font-size: 9px;
 }
