@@ -2,6 +2,7 @@ from flask import Blueprint, request, session, render_template
 from flask.ext.wtf import Form, SelectField, BooleanField
 from flask.views import MethodView
 from models import Image
+from urlparse import urljoin
 
 images = Blueprint('images', __name__, template_folder='templates')
 
@@ -81,6 +82,27 @@ class DetailView(MethodView):
         return render_template('images/detail.html', image=image)
 
 
+class RssView(MethodView):
+    def make_external(self, url):
+        return urljoin(request.url_root, 'static/images/' + url)
+
+    def get(self):
+        from werkzeug.contrib.atom import AtomFeed
+        feed = AtomFeed('Recent Images',
+                    feed_url=request.url, url=request.url_root)
+        images = Image.query.order_by(Image.added_on.desc()) \
+                      .limit(15).all()
+        for image in images:
+            feed.add(image.added_on,
+                     unicode('<img src="'+self.make_external(image.filename + '.' + image.ext) + '">'),
+                     content_type='html',
+                     author='kthnxbai',
+                     url=self.make_external(image.filename + '.' + image.ext),
+                     updated=image.added_on
+                     )
+        return feed.get_response()
+
+
 images.add_url_rule('/', view_func=ListView.as_view('list'),
                     defaults={'pagenum': 1})
 images.add_url_rule('/<int:pagenum>/', view_func=ListView.as_view('list'))
@@ -91,3 +113,6 @@ images.add_url_rule('/reorder/', view_func=ListView.as_view('list'))
 
 images.add_url_rule('/detail/<filename>/',
                     view_func=DetailView.as_view('detail'))
+
+images.add_url_rule('/latest.atom',
+                    view_func=RssView.as_view('rss'))
