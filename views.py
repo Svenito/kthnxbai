@@ -1,8 +1,10 @@
 from flask import Blueprint, request, session, render_template
 from flask.ext.wtf import Form, SelectField, BooleanField
 from flask.views import MethodView
+from app import app
 from models import Image
 from urlparse import urljoin
+import datetime
 
 images = Blueprint('images', __name__, template_folder='templates')
 
@@ -83,8 +85,9 @@ class DetailView(MethodView):
 
 
 class RssView(MethodView):
-    def make_external(self, url):
-        return urljoin(request.url_root, 'static/images/' + url)
+    def make_external_image(self, url):
+        static_image_url = urljoin(request.url_root, app.config['STATIC_URL'])
+        return urljoin(static_image_url, url)
 
     def get(self):
         from werkzeug.contrib.atom import AtomFeed
@@ -93,11 +96,13 @@ class RssView(MethodView):
         images = Image.query.order_by(Image.added_on.desc()) \
                       .limit(15).all()
         for image in images:
+            image_url = self.make_external_image(
+                    '.'.join((image.filename, image.ext)))
             feed.add(image.added_on,
-                     unicode('<img src="'+self.make_external(image.filename + '.' + image.ext) + '">'),
+                     unicode('<img src="%s">' % image_url),
                      content_type='html',
                      author='kthnxbai',
-                     url=self.make_external(image.filename + '.' + image.ext),
+                     url=image_url,
                      updated=image.added_on
                      )
         return feed.get_response()
