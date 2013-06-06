@@ -16,6 +16,12 @@ First configure the settings in
     configs/exampleconfig.py
   
 The ORM is SQLAlchemy, so you can use PostgreSQL, MySQL or SQLite.
+Setting the envvar KTBCONF_FILE will allow you to use test/stage/prod
+config files.
+
+Next you'll need to setup the database with
+
+    python manage.py db_create
 
 The way to import images is to create a 'to_process' folder in the 
 project root and then put all the images you want to import into that 
@@ -26,6 +32,12 @@ folder. Then run
 and it will create thumbnails, determine if the image is animated and
 import the data into the database. Thumbnails and original images are 
 then moved to the path set by the IMAGE_PATH config variable.
+
+To run locally simply
+
+    python manage.py runserver
+    
+will serve on port 5000
 
 Other
 -----
