@@ -15,8 +15,24 @@ a {
     color: #FF9900;
 }
 
-div.img
-{
+.rss {
+    float:right;
+    text-align: right;
+    display: block;
+    width: 45%;
+}
+
+.sort {
+    float:left;
+    display: block;
+    width: 45%;
+}
+
+br.clearing { 
+    clear: both; 
+}
+
+div.img {
   padding:5px;
   margin:5px;
   border-radius:10px;
@@ -53,24 +69,23 @@ div.border {
 div.border a {
 }
 
-div.img img
-  {
+div.img img {
   display:inline;
   margin:3px;
   border:1px solid #ffffff;
-  }
-div.img a:hover img
-  {
+}
+
+div.img a:hover img {
   border:1px solid #0000ff;
-  }
-div.desc
-  {
+}
+
+div.desc {
   text-align:center;
   font-weight:normal;
   font-size:11px;
   width:136px;
   margin:2px;
-  }
+}
 
 div#navigation {
     text-align: center;

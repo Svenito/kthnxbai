@@ -19,8 +19,7 @@
   {%- endfor %}
   </div>
 {% endmacro %}
-
-<form action="" method="post" name="login">
+<form action="" method="post" name="login" class="sort">
     {{form.hidden_tag()}}
     <p>
     Sort by: {{ form.sort_by(**{'onChange':'set_sort_by();'}) }} 
@@ -28,7 +27,8 @@
     Num per page: {{ form.num_per_page(**{'onChange':'set_num_per_page();'}) }}
     <span id="activity">Rejigging images...</span>
 </form>
-
+<a href="/latest.atom" class="rss">rss</a>
+<br class='clearing'/>
 {{ render_pagination(images, 'images.list') }}
 
 <div id="images">
