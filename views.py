@@ -85,7 +85,7 @@ class DetailView(MethodView):
 
 
 class RssView(MethodView):
-    def make_external_image(self, url):
+    def make_external_url(self, url):
         static_image_url = urljoin(request.url_root, app.config['STATIC_URL'])
         return urljoin(static_image_url, url)
 
@@ -93,18 +93,23 @@ class RssView(MethodView):
         from werkzeug.contrib.atom import AtomFeed
         feed = AtomFeed('Recent Images',
                     feed_url=request.url, url=request.url_root)
+        
         images = Image.query.order_by(Image.added_on.desc()) \
                       .limit(15).all()
+
         for image in images:
-            image_url = self.make_external_image(
+            image_url = self.make_external_url(
                     '.'.join((image.filename, image.ext)))
-            feed.add(image.added_on,
+            title = image.added_on.strftime('%d/%m/%Y')
+
+            feed.add(title,
                      unicode('<img src="%s">' % image_url),
                      content_type='html',
                      author='kthnxbai',
                      url=image_url,
                      updated=image.added_on
                      )
+
         return feed.get_response()
 
 
