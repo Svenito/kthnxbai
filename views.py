@@ -91,7 +91,7 @@ class RssView(MethodView):
 
     def get(self):
         from werkzeug.contrib.atom import AtomFeed
-        feed = AtomFeed('Recent Images',
+        feed = AtomFeed('Kthnxbai Recent Images',
                     feed_url=request.url, url=request.url_root)
         
         images = Image.query.order_by(Image.added_on.desc()) \

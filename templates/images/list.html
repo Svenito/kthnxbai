@@ -27,7 +27,9 @@
     Num per page: {{ form.num_per_page(**{'onChange':'set_num_per_page();'}) }}
     <span id="activity">Rejigging images...</span>
 </form>
-<a href="/latest.atom" class="rss">rss</a>
+<a href="/latest.atom" class="rss">
+    <img src="{{ url_for('static', filename='imgs/rss-icon.png') }}"/>
+</a>
 <br class='clearing'/>
 {{ render_pagination(images, 'images.list') }}
 

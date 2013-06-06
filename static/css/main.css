@@ -26,6 +26,7 @@ a {
     float:left;
     display: block;
     width: 45%;
+    margin-top: -10px;
 }
 
 br.clearing { 
