@@ -23,6 +23,22 @@ $( document ).ready(function() {
             }
             return false; // we processed the event, stop now.
     }
+
+    $('.info').data('powertipjq', $([
+		'<p><b>Keyboard shortcuts</b></p>',
+		'h : prev<br>',
+		'l : next<br>',
+		'j : random<br>',
+		'k : back to gallery<br>'
+	].join('\n')));
+	
+    $('.info').powerTip({
+		placement: 'e',
+        smartPlacement: true,
+		mouseOnToPopup: true
+	});
+    //$('.info').powerTip({placement:'e'});
+
 });
 
 

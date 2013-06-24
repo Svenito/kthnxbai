@@ -18,11 +18,13 @@
     {% else %}
         Next
     {% endif %}
+    <img src="{{ url_for('static', filename='imgs/info-icon.gif') }}" class='info'/>
     <br/>                                                                           
+
 Viewed: {{ image.num_views }} times<br/>
 Click image for random<br/>
-</div>
 
+</div>
 <div class="position">
     <div class="detail">
         <a id='random' href="/detail/{{ image.get_random() }}">
@@ -40,6 +42,7 @@ Click image for random<br/>
 {% block js_footer %}
 
 <script src="{{ url_for('static', filename='js/jquery-1.7.2.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.powertip.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/detailkeys.js') }}"></script>
 
 {% endblock %}
